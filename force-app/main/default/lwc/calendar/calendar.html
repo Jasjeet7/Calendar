@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Calendar" icon-name="custom:custom14">
+      <div class="slds-m-around_medium">
+        <p>Hello, {name}!</p> <br/>
+        
+        <template if:true={calendarData.data}>
+          
+          <lightning-layout multiple-rows="true" pull-to-boundary="small">
+            
+            <template for:each={calendarData.data} for:item="cal">
+              
+              <lightning-layout-item key={cal.name} size="4" class="slds-var-p-around_x-small">
+                <div class="slds-box">
+                <lightning-card title={cal.name} id ={cal.name} class="cal-tile" >
+
+                  <div class="slds-media__body">
+                    <p class="slds-var-m-bottom_xx-small">{cal.date.iso}</p>
+                    <p class="slds-var-m-bottom_xx-small">{cal.description}</p>
+                    <p class="slds-var-m-bottom_xx-small">Provinces -  {cal.locations}</p>
+                  </div>
+              </lightning-card>
+            </div>
+							<!-- End bear tile -->
+						</lightning-layout-item>
+          
+            </template>
+          
+          </lightning-layout> 
+        
+        </template>
+      </div>
+        <template if:true={calendarData.error}>
+            {calendarData.error}
+        </template>
+
+      </div>
+    </lightning-card>
+  </template>
